@@ -8,6 +8,7 @@ This system is still under development, but for now I'm deploying it on a small 
 Keep an eye out for a website that allows sign up for APOD texts featuring my newly minted full stack developer skills 😎. 
 
 ## Installation
+
 ###To run locally
 In main.py, enter your number, provider, and email to each respective "<    >"
 For the sender_credentials, create a Gmail account with an [app password](https://support.google.com/mail/answer/185833?hl=en). 
