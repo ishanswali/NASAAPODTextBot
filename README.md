@@ -1,104 +1,22 @@
-[Click here to watch a video of how this works](https://youtu.be/4-ysecoraKo)
+#NASA Astronomy Picture of the Day Text Bot
 
-etext is a python module that lets you send text messages using email SMS gateways. Both SMS and MMS are supported.
+##Description
+Hello there. This project is an automated delivery of an astronomy picture and description from NASA's Astronomy Picture of the Day (APOD) API. It's a small side project under development born from my love for Astronomy and Automation.
 
-# Installation
-```
-pip install etext
-```
+This system is still under development, but for now I'm deploying it on a small scale locally. It combines multiple different components: the NASA API, my own Python automation, and an [SMS/MMS Script](https://youtu.be/4-ysecoraKo) from [Alfredo Sequeida](https://github.com/AlfredoSequeida/). Huge thanks to him for his help on this project.
 
-# Sending SMS messages
-```
-from etext import send_sms_via_email
+Keep an eye out for a website that allows sign up for APOD texts featuring my newly minted full stack developer skills 😎. 
 
-phone_number = "123-123-1234"
-message = "hello world!"
-provider = "T-Mobile"
+## Installation
+###To run locally
+In main.py, enter your number, provider, and email to each respective "<    >"
+For the sender_credentials, create a Gmail account with an [app password](https://support.google.com/mail/answer/185833?hl=en). 
 
-sender_credentials = ("email@gmail.com", "email_password")
-
-send_sms_via_email(
-    phone_number, message, provider, sender_credentials, subject="sent using etext"
-)
+I will have the sign up feature set up soon, so it won't be necessary to run locally. Keep an eye out :)
 
 ```
-`number: str` - phone number to text
-
-`message: str` - message to send
-
-`provider: str` - phone provider/carrier [click here to see the supported providers](https://github.com/AlfredoSequeida/etext/blob/master/etext/providers.py).
-
-`sender_credentials: tuple` - email and password for SMTP server
-
-`subject: str = "sent using etext"` - subject for the email header
-
-`smtp_server: str = "smtp.gmail.com"` - smtp server to use (gmail is the default)
-
-`smtp_port: int = 465` - smtp port (465) is the default
-
-note the use of the keyword argument 'subject', some SMS gateways need a message to be formatted as an email, this includes the use of a subject in the header. You can try experimenting with the gateway you are using to see if you need to include text in the subject. Otherwise, you can pass in an empty subject like so:
-
-`subject=""`
-
-by default the smtp client used to send emails is gmail's smtp server on port 465. However, if you want to use a different smtp server or port you can do that using the `smtp_server` and `smtp_port` keyword arguments like this:
-
+$ git clone git@github.com:ishanswali/NASAAPODTextBot.git
+$ pip install -r requirements.txt
+$ cd NASAAPODTextBot/
+$ python main.py
 ```
-send_sms_via_email(
-    phone_number,
-    message,
-    provider,
-    sender_credentials,
-    smtp_server="some_smtp_server",
-    smtp_port="502",
-)
-```
-
-# Sending MMS messages
-```
-from etext import send_mms_via_email
-
-file_path = "/path/to/file/file.png"
-
-mime_maintype = "image"
-mime_subtype = "png"
-
-# note that compared to the first example, this number is formatted differently
-# etext removes any characters that are not digits in the number, so feel free
-# to format numbers however you want
-phone_number = "(123) 123-1234"
-
-message = "hello world!"
-provider = "T-Mobile"
-
-sender_credentials = ("email@gmail.com", "email_password")
-
-send_mms_via_email(
-    phone_number,
-    message,
-    file_path,
-    mime_maintype,
-    mime_subtype,
-    provider,
-    sender_credentials,
-)
-```
-
-This method has all of the same parameters as the SMS method but adds three more parameters.
-
-`file_path:str` - the file path of the file to send in the message
-
-`mime_maintype:str` - the mime main type
-
-`mime_subtype:str` - the mime sub type
-
-[here is a resource containing common mime types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
-
-the format corresponds like this: `mime_maintype/mime_subtype`. As an example, to send a pdf file via MMS, which has the following MIME type: `application/pdf`, we could use these main and subtypes:
-
-```
-mime_maintype = "application"
-mime_subtype = "pdf"
-```
-
-# More
-If you are using etext with Gmail, you should set up an app password for use with etext. You can do that by clicking [here](https://myaccount.google.com/apppasswords).

@@ -7,17 +7,10 @@ import schedule
 from etext import send_sms_via_email, send_mms_via_email
 from getimage import retrieve, saveimage
 
-phone_number = "518-878-4103"
-provider = "T-Mobile"
+phone_number = "<YOUR NUMBER HERE>"
+provider = "<YOUR PROVIDER HERE>"
 
-# "apodtexts@gmail.com", "xhiuwqquipciyvaq"
-# "tempacc1889@gmail.com", "ydwfwowovdnbizfw"
-
-sender_credentials = ("tempacc1889@gmail.com", "ydwfwowovdnbizfw")
-
-
-# send_sms_via_email(phone_number, message, provider, sender_credentials, subject="Test text message")
-# send_mms_via_email(phone_number, message, file_path, mime_maintype, mime_subtype, provider, sender_credentials, subject=' ')
+sender_credentials = ("<YOUR EMAIL HERE>", "<YOUR APP PASSWORD HERE>")
 
 
 def run():
@@ -51,7 +44,7 @@ def run():
 
 
 run()
-schedule.every(3).minutes.do(run)
+schedule.every(24).hours.do(run)
 
 while True:
     schedule.run_pending()
