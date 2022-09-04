@@ -1,4 +1,4 @@
-#N ASA Astronomy Picture of the Day Text Bot
+# NASA Astronomy Picture of the Day Text Bot
 
 ## Description
 Hello there. This project is an automated delivery of an astronomy picture and description from NASA's Astronomy Picture of the Day (APOD) API. It's a small side project under development born from my love for Astronomy and Automation.
